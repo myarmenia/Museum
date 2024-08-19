@@ -15,6 +15,9 @@ services:
       - "8000:8000"
     networks:
       - app-network
+    volumes:
+      - /home/webex/Museum/museum.gorc-ka.am/storage/app/public/qr_images:/home/webex/Museum/museum.gorc-ka.am/storage/app/public/qr_images
+
 
 #  nginx:
 #    image: nginx:latest
