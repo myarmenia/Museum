@@ -16,7 +16,7 @@ services:
     networks:
       - app-network
     volumes:
-      - /home/webex/Museum/museum.gorc-ka.am/storage:/home/webex/Museum/museum.gorc-ka.am/storage
+      - /home/webex/Museum/museum.gorc-ka.am/storage:/home/webex/Museum/storage
 
 
 #  nginx:
