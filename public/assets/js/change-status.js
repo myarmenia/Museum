@@ -27,6 +27,8 @@ $(function () {
           }
           // status && field_name == 'online_sales' ? (status_word = 'Ակտիվ1', status_class = 'success') : (status_word = 'Ապաակտիվ2', status_class = 'danger')
 
+
+          console.log('status_class' + ' /////')
           if (tb_name == 'events'){
             changeElemen.closest('tr').children('.statuses').children('.' + field_name).html(`
               <span class="badge bg-label-${status_class} me-1">${status_word}</span>`)
