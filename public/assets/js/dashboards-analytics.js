@@ -12,21 +12,19 @@
   axisColor = config.colors.axisColor;
   borderColor = config.colors.borderColor;
 
-  var totalRevenueObj = JSON.parse(totalRevenueResult)
-  var attendanceByCountryObj = JSON.parse(attendanceByCountry)
-  var attendanceByAgeObj = JSON.parse(attendanceByAge)
-  console.log(totalRevenueObj.total_prices);
   // Total Revenue Report Chart - Bar Chart
   // --------------------------------------------------------------------
   const totalRevenueChartEl = document.querySelector('#totalRevenueChart'),
     totalRevenueChartOptions = {
       series: [
         {
-          name: new Date().getFullYear(),
-          // data: [18, 7, 15, 29, 18, 12, 9]
-          data: totalRevenueObj.total_prices
+          name: '2021',
+          data: [18, 7, 15, 29, 18, 12, 99]
+        },
+        {
+          name: '2020',
+          data: [-13, -18, -9, -14, -5, -17, -15]
         }
-
       ],
       chart: {
         height: 300,
@@ -74,17 +72,16 @@
         borderColor: borderColor,
         padding: {
           top: 0,
-          bottom: 8,
+          bottom: -8,
           left: 20,
           right: 20
         }
       },
       xaxis: {
-        // categories: ['January', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        categories: totalRevenueObj.item_names,
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
         labels: {
           style: {
-            fontSize: '8px',
+            fontSize: '13px',
             colors: axisColor
           }
         },
@@ -105,7 +102,7 @@
       },
       responsive: [
         {
-          breakpoint: 1700,
+          breakpoint: 555,
           options: {
             plotOptions: {
               bar: {
@@ -116,7 +113,7 @@
           }
         },
         {
-          breakpoint: 1580,
+          breakpoint: 666,
           options: {
             plotOptions: {
               bar: {
@@ -127,7 +124,7 @@
           }
         },
         {
-          breakpoint: 1440,
+          breakpoint: 777,
           options: {
             plotOptions: {
               bar: {
@@ -138,7 +135,7 @@
           }
         },
         {
-          breakpoint: 111111,
+          breakpoint: 1300,
           options: {
             plotOptions: {
               bar: {
@@ -430,9 +427,9 @@
         width: 130,
         type: 'donut'
       },
-      labels: attendanceByCountryObj.labels,
-      series: attendanceByCountryObj.series,
-      colors: [config.colors.primary, config.colors.secondary, config.colors.info, config.colors.success, config.colors.warning],
+      labels: ['Electronic', 'Sports', 'Decor', 'Fashion'],
+      series: [85, 15, 50, 50],
+      colors: [config.colors.primary, config.colors.secondary, config.colors.info, config.colors.success],
       stroke: {
         width: 5,
         colors: [cardColor]
@@ -440,7 +437,7 @@
       dataLabels: {
         enabled: false,
         formatter: function (val, opt) {
-          return parseInt(val);
+          return parseInt(val) + '%';
         }
       },
       legend: {
@@ -473,7 +470,7 @@
                 color: headingColor,
                 offsetY: -15,
                 formatter: function (val) {
-                  return parseInt(val);
+                  return parseInt(val) + '%';
                 }
               },
               name: {
@@ -484,9 +481,9 @@
                 show: true,
                 fontSize: '0.8125rem',
                 color: axisColor,
-                label: 'Երկրները',
+                label: 'Weekly',
                 formatter: function (w) {
-                  return 'Բոլոր';
+                  return '38%';
                 }
               }
             }
@@ -499,86 +496,175 @@
     statisticsChart.render();
   }
 
-
-  // Order Statistics Chart Age
+  // Income Chart - Area chart
   // --------------------------------------------------------------------
-  const chartOrderStatisticsAge = document.querySelector('#orderStatisticsChartAge'),
-    orderChartConfigAge = {
+  const incomeChartEl = document.querySelector('#incomeChart'),
+    incomeChartConfig = {
+      series: [
+        {
+          data: [24, 21, 30, 22, 42, 26, 35, 29]
+        }
+      ],
       chart: {
-        height: 165,
-        width: 130,
-        type: 'donut'
-      },
-      labels: ['Դեռահաս', 'Երիտասարդ', 'Տարեց', 'Անհայտ'],
-      series: attendanceByAgeObj,
-      colors: [config.colors.primary, config.colors.secondary, config.colors.info, config.colors.success, config.colors.warning],
-      stroke: {
-        width: 5,
-        colors: [cardColor]
+        height: 215,
+        parentHeightOffset: 0,
+        parentWidthOffset: 0,
+        toolbar: {
+          show: false
+        },
+        type: 'area'
       },
       dataLabels: {
-        enabled: false,
-        formatter: function (val, opt) {
-          // return parseInt(val);
-        }
+        enabled: false
+      },
+      stroke: {
+        width: 2,
+        curve: 'smooth'
       },
       legend: {
         show: false
       },
+      markers: {
+        size: 6,
+        colors: 'transparent',
+        strokeColors: 'transparent',
+        strokeWidth: 4,
+        discrete: [
+          {
+            fillColor: config.colors.white,
+            seriesIndex: 0,
+            dataPointIndex: 7,
+            strokeColor: config.colors.primary,
+            strokeWidth: 2,
+            size: 6,
+            radius: 8
+          }
+        ],
+        hover: {
+          size: 7
+        }
+      },
+      colors: [config.colors.primary],
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shade: shadeColor,
+          shadeIntensity: 0.6,
+          opacityFrom: 0.5,
+          opacityTo: 0.25,
+          stops: [0, 95, 100]
+        }
+      },
+      grid: {
+        borderColor: borderColor,
+        strokeDashArray: 3,
+        padding: {
+          top: -20,
+          bottom: -8,
+          left: -10,
+          right: 8
+        }
+      },
+      xaxis: {
+        categories: ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
+        },
+        labels: {
+          show: true,
+          style: {
+            fontSize: '13px',
+            colors: axisColor
+          }
+        }
+      },
+      yaxis: {
+        labels: {
+          show: false
+        },
+        min: 10,
+        max: 50,
+        tickAmount: 4
+      }
+    };
+  if (typeof incomeChartEl !== undefined && incomeChartEl !== null) {
+    const incomeChart = new ApexCharts(incomeChartEl, incomeChartConfig);
+    incomeChart.render();
+  }
+
+  // Expenses Mini Chart - Radial Chart
+  // --------------------------------------------------------------------
+  const weeklyExpensesEl = document.querySelector('#expensesOfWeek'),
+    weeklyExpensesConfig = {
+      series: [65],
+      chart: {
+        width: 60,
+        height: 60,
+        type: 'radialBar'
+      },
+      plotOptions: {
+        radialBar: {
+          startAngle: 0,
+          endAngle: 360,
+          strokeWidth: '8',
+          hollow: {
+            margin: 2,
+            size: '45%'
+          },
+          track: {
+            strokeWidth: '50%',
+            background: borderColor
+          },
+          dataLabels: {
+            show: true,
+            name: {
+              show: false
+            },
+            value: {
+              formatter: function (val) {
+                return '$' + parseInt(val);
+              },
+              offsetY: 5,
+              color: '#697a8d',
+              fontSize: '13px',
+              show: true
+            }
+          }
+        }
+      },
+      fill: {
+        type: 'solid',
+        colors: config.colors.primary
+      },
+      stroke: {
+        lineCap: 'round'
+      },
       grid: {
         padding: {
-          top: 0,
-          bottom: 0,
-          right: 15
+          top: -10,
+          bottom: -15,
+          left: -10,
+          right: -10
         }
       },
       states: {
         hover: {
-          filter: { type: 'none' }
+          filter: {
+            type: 'none'
+          }
         },
         active: {
-          filter: { type: 'none' }
-        }
-      },
-      plotOptions: {
-        pie: {
-          donut: {
-            size: '75%',
-            labels: {
-              show: true,
-              value: {
-                fontSize: '1.5rem',
-                fontFamily: 'Public Sans',
-                color: headingColor,
-                offsetY: -15,
-                formatter: function (val) {
-                  return parseInt(val);
-                }
-              },
-              name: {
-                offsetY: 20,
-                fontFamily: 'Public Sans'
-              },
-              total: {
-                show: true,
-                fontSize: '0.8125rem',
-                color: axisColor,
-                label: 'Տարիքները',
-                formatter: function (w) {
-                  return 'Բոլոր';
-                }
-              }
-            }
+          filter: {
+            type: 'none'
           }
         }
       }
     };
-  if (typeof chartOrderStatisticsAge !== undefined && chartOrderStatisticsAge !== null) {
-    const statisticsChartAge = new ApexCharts(chartOrderStatisticsAge, orderChartConfigAge);
-    statisticsChartAge.render();
+  if (typeof weeklyExpensesEl !== undefined && weeklyExpensesEl !== null) {
+    const weeklyExpenses = new ApexCharts(weeklyExpensesEl, weeklyExpensesConfig);
+    weeklyExpenses.render();
   }
-
-
-
- 
 })();
