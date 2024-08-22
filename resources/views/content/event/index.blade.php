@@ -87,7 +87,7 @@
                                     @if ($item->status)
                                         <span class="badge bg-label-success me-1">Ակտիվ</span>
                                     @else
-                                        <span class="badge bg-label-danger me-1">Ապաակտիվ1</span>
+                                        <span class="badge bg-label-danger me-1">Ապաակտիվ12</span>
                                     @endif
                                   </div>
                                   <div class="online_sales mt-1">
