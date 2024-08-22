@@ -92,7 +92,8 @@
                                   </div>
                                   <div class="online_sales mt-1">
 
-                                    <span class="badge {{$item->online_sales ? 'bg-label-success' : 'bg-label-danger' }} me-1  ">Առցանց վաճառք 77</span>
+                                    <span class="badge {{$item->online_sales ? 'bg-label-success' : 'bg-label-danger' }} me-1  ">Առցանց վաճառք 77 88</span>
+
 
 
                                   </div>
